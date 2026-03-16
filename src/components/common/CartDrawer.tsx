@@ -75,10 +75,10 @@ export function CartDrawer({ isOpen, onClose, onNavigateToPedido, whatsappNumber
 
         const itemsText = items.map(item => {
             let desc = `- ${item.quantity}x ${item.name} (R$ ${item.price.toFixed(2)})\n`
-            desc += `  Base: ${item.saborBase}\n`
-            if (item.frutas.length > 0) desc += `  Frutas: ${item.frutas.join(', ')}\n`
-            if (item.adicionais.length > 0) desc += `  Complementos: ${item.adicionais.join(', ')}\n`
-            if (item.coberturas.length > 0) desc += `  Coberturas: ${item.coberturas.join(', ')}\n`
+            if (item.saborBase) desc += `  Base: ${item.saborBase}\n`
+            if (item.frutas && item.frutas.length > 0) desc += `  Frutas: ${item.frutas.join(', ')}\n`
+            if (item.adicionais && item.adicionais.length > 0) desc += `  Complementos: ${item.adicionais.join(', ')}\n`
+            if (item.coberturas && item.coberturas.length > 0) desc += `  Coberturas: ${item.coberturas.join(', ')}\n`
             return desc
         }).join('\n')
 
@@ -170,8 +170,8 @@ export function CartDrawer({ isOpen, onClose, onNavigateToPedido, whatsappNumber
                                                     </div>
                                                     <div className="flex-1">
                                                         <h4 className="font-black text-acai-dark leading-tight">{item.name}</h4>
-                                                        <p className="text-xs text-gray-500 mt-1"><span className="font-bold">Base:</span> {item.saborBase}</p>
-                                                        {(item.frutas.length > 0 || item.adicionais.length > 0) && (
+                                                        {item.saborBase && <p className="text-xs text-gray-500 mt-1"><span className="font-bold">Base:</span> {item.saborBase}</p>}
+                                                        {((item.frutas?.length || 0) > 0 || (item.adicionais?.length || 0) > 0) && (
                                                             <p className="text-xs text-acai-vibrant line-clamp-1 mt-0.5">
                                                                 +[...] opções
                                                             </p>

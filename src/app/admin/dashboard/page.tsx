@@ -8,6 +8,7 @@ import {
     DollarSign,
     Target,
     ArrowLeft,
+    ArrowRight,
     Settings,
     LogOut
 } from 'lucide-react'

@@ -7,10 +7,10 @@ export type AcaiCartItem = {
     name: string // ex: "Açaí 500ml"
     price: number
     quantity: number
-    saborBase: string
-    frutas: string[]
-    adicionais: string[]
-    coberturas: string[]
+    saborBase?: string
+    frutas?: string[]
+    adicionais?: string[]
+    coberturas?: string[]
 }
 
 type CartContextType = {

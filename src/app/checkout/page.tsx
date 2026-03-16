@@ -1,4 +1,5 @@
 'use client'
+export const dynamic = 'force-dynamic'
 
 import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
@@ -63,10 +64,10 @@ export default function CheckoutPage() {
         // Formatação da mensagem para o WhatsApp
         const itemsText = items.map(item => {
             let details = `*${item.name}* (x${item.quantity}) - R$ ${(item.price * item.quantity).toFixed(2)}\n`
-            details += `   Base: ${item.saborBase}\n`
-            if (item.frutas.length > 0) details += `   Frutas: ${item.frutas.join(', ')}\n`
-            if (item.adicionais.length > 0) details += `   Adicionais: ${item.adicionais.join(', ')}\n`
-            if (item.coberturas.length > 0) details += `   Coberturas: ${item.coberturas.join(', ')}\n`
+            if (item.saborBase) details += `   Base: ${item.saborBase}\n`
+            if (item.frutas && item.frutas.length > 0) details += `   Frutas: ${item.frutas.join(', ')}\n`
+            if (item.adicionais && item.adicionais.length > 0) details += `   Adicionais: ${item.adicionais.join(', ')}\n`
+            if (item.coberturas && item.coberturas.length > 0) details += `   Coberturas: ${item.coberturas.join(', ')}\n`
             return details
         }).join('\n')
 
@@ -371,7 +372,7 @@ export default function CheckoutPage() {
                                             <span className="text-acai-lime">R$ {(item.price * item.quantity).toFixed(2)}</span>
                                         </div>
                                         <p className="text-[10px] text-white/40 font-bold uppercase tracking-widest">
-                                            {item.saborBase} • {item.frutas.length + item.adicionais.length} itens
+                                            {item.saborBase} • {(item.frutas?.length || 0) + (item.adicionais?.length || 0)} itens
                                         </p>
                                     </div>
                                 ))}
