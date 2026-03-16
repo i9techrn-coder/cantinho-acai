@@ -1,0 +1,114 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #1c1c1c;
+  --primary: #6b21a8;
+  /* Roxo Acai Vibrante */
+  --primary-light: #9333ea;
+  --primary-foreground: #ffffff;
+  --secondary: #f8fafc;
+  --secondary-foreground: #3b0764;
+  --accent: #84cc16;
+  /* Verde Limão */
+  --cream: #fdfdfd;
+  --acai-light: #f3e8ff;
+  --chocolate: #3b0764;
+  /* Roxo Escuro */
+  --muted: #f4f4f5;
+  --muted-foreground: #71717a;
+  --border: #e9d5ff;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-light: var(--primary-light);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-accent: var(--accent);
+  --color-cream: var(--cream);
+  --color-chocolate: var(--chocolate);
+  --color-border: var(--border);
+
+  /* Acai Specific Colors */
+  --color-acai-light: #f3e8ff;
+  --color-acai-lime: #84cc16;
+  --color-acai-vibrant: #9333ea;
+  --color-acai-dark: #3b0764;
+
+  --font-serif: var(--font-playfair);
+  --font-sans: var(--font-inter);
+
+  --radius-xl: 1.5rem;
+  --radius-lg: 1rem;
+  --radius-md: 0.75rem;
+  --radius-sm: 0.5rem;
+
+  --shadow-premium: 0 20px 25px -5px rgb(147 51 234 / 0.1), 0 8px 10px -6px rgb(147 51 234 / 0.1);
+}
+
+@layer components {
+  .nav-link {
+    @apply text-sm font-bold uppercase tracking-widest text-acai-dark/60 transition-colors hover:text-acai-vibrant;
+  }
+
+  .btn-primary {
+    @apply bg-acai-vibrant text-white rounded-full font-bold px-8 py-3 shadow-lg shadow-acai-vibrant/20 hover:scale-105 transition-transform;
+  }
+
+  .btn-secondary {
+    @apply bg-acai-lime text-acai-dark rounded-full font-bold px-8 py-3 hover:bg-lime-400 transition-all;
+  }
+
+  .section-title {
+    @apply text-4xl font-serif text-acai-dark text-center mb-12 relative pb-4 after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-20 after:h-1 after:bg-acai-lime after:rounded-full;
+  }
+
+  .glass-card {
+    @apply bg-white/70 backdrop-blur-md border border-acai-light rounded-[40px] shadow-premium;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-inter), var(--font-sans), system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+.font-premium {
+  font-family: var(--font-playfair), var(--font-serif), serif;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+/* Glassmorphism */
+.glass {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.glass-dark {
+  background: rgba(59, 7, 100, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.text-gradient {
+  background: linear-gradient(to right, var(--color-acai-vibrant), var(--color-acai-lime));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
